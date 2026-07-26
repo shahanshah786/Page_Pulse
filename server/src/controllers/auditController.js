@@ -4,11 +4,7 @@ const logger = require('../config/logger');
 const { auditUrl } = require('../services/auditService');
 const { getCachedAudit, setCachedAudit } = require('../services/cacheService');
 
-/**
- * POST /api/audit
- * Validated req.body.url is guaranteed present at this point
- * (see validators/auditValidator.js + middlewares/validate.js).
- */
+
 async function createAudit(req, res, next) {
   const { url } = req.body;
 
