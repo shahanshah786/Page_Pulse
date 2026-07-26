@@ -3,12 +3,6 @@
 const Redis = require('ioredis');
 const logger = require('../config/logger');
 
-/**
- * Thin wrapper around ioredis exposing the same interface as
- * MemoryCacheAdapter (get/set/del/isHealthy/close), so the caching
- * service can swap between them without any conditional logic
- * elsewhere in the codebase.
- */
 class RedisCacheAdapter {
   constructor(url) {
     this.name = 'redis';
