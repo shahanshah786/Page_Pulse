@@ -1,11 +1,4 @@
 'use strict';
-
-/**
- * A minimal drop-in replacement for the Redis adapter, used when
- * REDIS_URL is not configured (e.g. local dev without Docker, or
- * the free tier of a host with no managed Redis). Same interface,
- * so the rest of the app never needs to know which one is active.
- */
 class MemoryCacheAdapter {
   constructor() {
     this.store = new Map();
