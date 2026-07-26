@@ -1,9 +1,4 @@
-/**
- * The Page Pulse signature element: an EKG-style waveform.
- * - idle: gentle ambient drift, low opacity
- * - scanning: fast animated sweep (dash-offset loop)
- * - done: settles into a static trace colored by outcome
- */
+
 export default function PulseMonitor({ state = 'idle', tone = 'ok', className = '' }) {
   const toneColor =
     tone === 'error' ? '#FB7185' : tone === 'warn' ? '#FBBF24' : '#22D3EE';
