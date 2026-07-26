@@ -6,11 +6,7 @@ const MemoryCacheAdapter = require('./MemoryCacheAdapter');
 
 let adapter;
 
-/**
- * Lazily builds the cache adapter. Redis is used when REDIS_URL is
- * configured; otherwise we transparently fall back to the in-memory
- * adapter so local dev / low-tier deployments still work.
- */
+
 function getCacheAdapter() {
   if (adapter) return adapter;
 
