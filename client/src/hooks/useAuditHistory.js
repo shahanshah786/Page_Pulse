@@ -16,16 +16,10 @@ function writeHistory(entries) {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
   } catch {
-    // Storage may be unavailable (private browsing, quota). Fail silently;
-    // history is a convenience feature, not a critical path.
+    
   }
 }
 
-/**
- * Manages the client-side "recent audits" list. Each audit result is
- * cached locally so the History page and the "recent audits" panel
- * on Home work without a backend datastore.
- */
 export function useAuditHistory() {
   const [history, setHistory] = useState(() => readHistory());
 
