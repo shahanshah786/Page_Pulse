@@ -8,11 +8,7 @@ export const apiClient = axios.create({
   headers: { 'Content-Type': 'application/json' },
 });
 
-/**
- * Runs an audit against a URL. Throws a normalized error object
- * ({ message, errorCode, requestId, details }) on failure so the UI
- * doesn't need to know about axios/response shape internals.
- */
+
 export async function runAudit(url) {
   try {
     const { data } = await apiClient.post('/audit', { url });
