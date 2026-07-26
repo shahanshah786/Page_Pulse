@@ -5,11 +5,7 @@ const path = require('path');
 const envFile = process.env.NODE_ENV === 'test' ? '.env.test' : '.env';
 require('dotenv').config({ path: path.resolve(__dirname, '../../', envFile) });
 
-/**
- * Centralized, validated environment configuration.
- * Every other module reads config from here instead of
- * touching process.env directly (single source of truth).
- */
+
 const config = Object.freeze({
   nodeEnv: process.env.NODE_ENV || 'development',
   isProduction: process.env.NODE_ENV === 'production',
