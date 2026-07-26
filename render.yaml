@@ -1,0 +1,42 @@
+services:
+  - type: web
+    name: page-pulse-api
+    runtime: node
+    region: oregon
+    plan: free
+    rootDir: server
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: CORS_ORIGIN
+        sync: false
+      - key: REDIS_URL
+        sync: false
+      - key: CACHE_TTL_SECONDS
+        value: 300
+      - key: RATE_LIMIT_WINDOW_MS
+        value: 60000
+      - key: RATE_LIMIT_MAX
+        value: 20
+      - key: AUDIT_TIMEOUT_MS
+        value: 5000
+      - key: AUDIT_MAX_CONCURRENCY
+        value: 10
+      - key: AUDIT_MAX_REDIRECTS
+        value: 5
+      - key: LOG_LEVEL
+        value: info
+
+  # Optional managed Redis instance. Remove this block (and the
+  # REDIS_URL env var above) to run on the in-memory cache adapter
+  # instead -- useful for the Render free tier.
+  - type: redis
+    name: page-pulse-redis
+    plan: free
+    region: oregon
+    ipAllowList: []
